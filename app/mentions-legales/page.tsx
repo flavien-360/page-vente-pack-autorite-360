@@ -1,26 +1,30 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect } from "react"
 import { ArrowLeft, FileText, Lock, Printer, Scale, Shield } from "lucide-react"
 
 export default function MentionsLegalesPage() {
+  // Masque les éléments Chatbase persistants sur la page juridique (et les restaure au retour)
+  useEffect(() => {
+    const selector =
+      'iframe[src*="chatbase"], iframe[id*="chatbase"], [id*="chatbase"], [class*="chatbase"]'
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>(selector))
+    const prevDisplay = nodes.map((el) => el.style.display)
+
+    nodes.forEach((el) => {
+      el.style.display = "none"
+    })
+
+    return () => {
+      nodes.forEach((el, index) => {
+        el.style.display = prevDisplay[index]
+      })
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-[#09090B] text-zinc-100 font-sans selection:bg-[#D4AF37]/30 selection:text-white print:min-h-0 print:bg-white print:text-zinc-900">
-      <style>{`
-        @media print {
-          @page {
-            size: A4 portrait;
-            margin: 14mm 15mm;
-          }
-          html, body {
-            background: #ffffff !important;
-            color: #18181b !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-        }
-      `}</style>
-
       {/* ARRIÈRE-PLAN IDENTIQUE À LA PAGE DE VENTE (MASQUÉ EN PDF) */}
       <img
         src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop"
@@ -65,32 +69,32 @@ export default function MentionsLegalesPage() {
       </header>
 
       {/* CONTENU LÉGAL */}
-      <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 print:max-w-none print:p-0">
-        {/* BANDEAU EN-TÊTE NOIR & OR (IDENTIQUE WEB + PDF) */}
-        <div className="mb-10 p-6 sm:p-8 rounded-2xl bg-[#121216]/90 border border-[#D4AF37]/35 print:mb-6 print:p-6 print:rounded-xl print:bg-[#09090B] print:border-[#D4AF37]">
-          <div className="flex items-center gap-3 mb-4">
+      <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 print:w-full print:max-w-full print:mx-0 print:px-1 print:py-0 print:overflow-hidden">
+        {/* BANDEAU EN-TÊTE NOIR & OR (WEB + PAGE 1 PDF) */}
+        <div className="mb-10 p-6 sm:p-8 rounded-2xl bg-[#121216]/90 border border-[#D4AF37]/35 print:mb-5 print:p-5 print:rounded-xl print:bg-[#09090B] print:border-[#D4AF37]">
+          <div className="flex items-center gap-3 mb-3">
             <img
               src="/logo-pack-transparent.png"
               alt="Pack Autorité 360"
-              className="h-8 w-auto object-contain"
+              className="h-7 w-auto object-contain"
             />
             <span className="font-bold text-white text-lg tracking-tight">
               Pack Autorité <span className="text-[#D4AF37]">360</span>
             </span>
           </div>
 
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] mb-1.5">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] mb-1">
             Conformité légale France · B2B
           </p>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2 print:text-2xl">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-1.5 print:text-xl">
             Mentions Légales, RGPD &amp; CGV B2B
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 print:text-zinc-300">
+          <p className="text-xs sm:text-sm text-zinc-400 print:text-[10.5px] print:text-zinc-300">
             Dernière mise à jour : 2026 — Applicables à l’ensemble des sites et services Pack Autorité 360 (immo-systeme.fr).
           </p>
         </div>
 
-        <div className="space-y-10 text-sm sm:text-[15px] leading-relaxed text-zinc-300 print:space-y-0 print:text-[11px] print:leading-[1.5] print:text-zinc-800">
+        <div className="space-y-10 text-sm sm:text-[15px] leading-relaxed text-zinc-300 break-words print:space-y-0 print:text-[10.5px] print:leading-[1.45] print:text-zinc-800">
           {/* SECTION 1 : MENTIONS LÉGALES (PAGE 1 PDF) */}
           <section
             id="mentions"
@@ -100,17 +104,17 @@ export default function MentionsLegalesPage() {
               <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center print:hidden">
                 <FileText className="w-5 h-5 text-[#D4AF37]" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-lg print:text-[#09090B]">
+              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-base print:text-[#09090B]">
                 1. Mentions Légales
               </h2>
             </div>
 
-            <div className="space-y-6 print:space-y-4">
+            <div className="space-y-6 print:space-y-3.5">
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   1.1. Éditeur du site et du logiciel
                 </h3>
-                <p className="mb-2.5">
+                <p className="mb-2">
                   Le site vitrine et l’infrastructure logicielle{" "}
                   <strong className="text-white print:text-black">Pack Autorité 360</strong> (nom de domaine{" "}
                   <strong className="text-white print:text-black">immo-systeme.fr</strong> et ses sous-domaines) sont édités par :
@@ -144,7 +148,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   1.2. Hébergement de l’infrastructure
                 </h3>
                 <ul className="space-y-1.5 pl-5 list-disc marker:text-[#D4AF37]">
@@ -161,7 +165,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   1.3. Propriété intellectuelle
                 </h3>
                 <p>
@@ -171,7 +175,7 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* SECTION 2 : RGPD (SAUT DE PAGE PROPRE → PAGE 2 PDF) */}
+          {/* SECTION 2 : RGPD (PAGE 2 PDF) */}
           <section
             id="rgpd"
             className="scroll-mt-24 p-6 sm:p-8 rounded-2xl bg-[#121216]/90 border border-white/10 print:break-before-page print:p-0 print:bg-transparent print:border-0 print:rounded-none"
@@ -180,14 +184,14 @@ export default function MentionsLegalesPage() {
               <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center print:hidden">
                 <Lock className="w-5 h-5 text-[#D4AF37]" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-lg print:text-[#09090B]">
+              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-base print:text-[#09090B]">
                 2. Politique de Confidentialité (RGPD)
               </h2>
             </div>
 
             <div className="space-y-6 print:space-y-3.5">
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   2.1. Collecte, finalités et bases légales
                 </h3>
                 <p className="mb-2">
@@ -207,7 +211,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   2.2. Sous-traitants techniques et transferts hors UE
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-[#D4AF37] mb-2">
@@ -230,7 +234,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   2.3. Durées de conservation
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-[#D4AF37]">
@@ -244,7 +248,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   2.4. Rôle de sous-traitant sur les données des prospects du client (art. 28 RGPD)
                 </h3>
                 <p>
@@ -255,7 +259,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-2 print:text-[11px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   2.5. Exercice de vos droits
                 </h3>
                 <p>
@@ -273,23 +277,23 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* SECTION 3 : CGV B2B (SAUT DE PAGE PROPRE → PAGE 3 PDF) */}
+          {/* SECTION 3 : CGV B2B (PAGE 3 PDF COMPLÈTE) */}
           <section
             id="cgv"
             className="scroll-mt-24 p-6 sm:p-8 rounded-2xl bg-[#121216]/90 border border-white/10 print:break-before-page print:p-0 print:bg-transparent print:border-0 print:rounded-none"
           >
-            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-white/10 print:mb-4 print:pb-2 print:border-[#D4AF37] print:break-after-avoid">
+            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-white/10 print:mb-3 print:pb-2 print:border-[#D4AF37] print:break-after-avoid">
               <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center print:hidden">
                 <Scale className="w-5 h-5 text-[#D4AF37]" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-lg print:text-[#09090B]">
+              <h2 className="text-xl sm:text-2xl font-bold text-white print:text-base print:text-[#09090B]">
                 3. Conditions Générales de Vente (CGV) — B2B
               </h2>
             </div>
 
-            <div className="space-y-6 print:space-y-3.5">
+            <div className="space-y-6 print:space-y-2.5 print:text-[10px] print:leading-[1.4]">
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 1 — Objet et champ d’application
                 </h3>
                 <p>
@@ -300,10 +304,10 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 2 — Description du service et obligations
                 </h3>
-                <p className="mb-1.5">
+                <p className="mb-1">
                   Pack Autorité 360 est une infrastructure logicielle en ligne (SaaS) comprenant le déploiement d’un tunnel de capture vendeurs, un espace client de validation, la préparation et la diffusion automatisée de contenus locaux, ainsi que des séquences d’e-mails reliées à l’agenda du client.
                 </p>
                 <p>
@@ -312,10 +316,10 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 3 — Tarifs, paiement et pénalités de retard
                 </h3>
-                <ul className="space-y-1 pl-5 list-disc marker:text-[#D4AF37] mb-2">
+                <ul className="space-y-0.5 pl-5 list-disc marker:text-[#D4AF37] mb-1">
                   <li>
                     <strong className="text-white print:text-black">Frais de mise en place technique uniques :</strong> 297 € net, exigibles immédiatement à la commande.
                   </li>
@@ -323,7 +327,7 @@ export default function MentionsLegalesPage() {
                     <strong className="text-white print:text-black">Abonnement mensuel récurrent :</strong> 197 € net par mois, prélevé automatiquement à date anniversaire (mandat SEPA GoCardless ou carte bancaire).
                   </li>
                 </ul>
-                <p className="mb-1.5">
+                <p className="mb-1">
                   <strong className="text-white print:text-black">TVA non applicable, article 293 B du CGI.</strong> Tout mois d’abonnement entamé reste dû dans son intégralité.
                 </p>
                 <p>
@@ -334,7 +338,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 4 — Absence de droit de rétractation
                 </h3>
                 <p>
@@ -343,7 +347,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 5 — Durée et résiliation
                 </h3>
                 <p>
@@ -359,7 +363,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 6 — Propriété intellectuelle et limitation de responsabilité
                 </h3>
                 <p>
@@ -368,7 +372,7 @@ export default function MentionsLegalesPage() {
               </div>
 
               <div className="print:break-inside-avoid">
-                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:text-xs print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
+                <h3 className="text-base font-bold text-[#E7C766] mb-1.5 print:mb-1 print:text-[10.5px] print:uppercase print:tracking-wide print:text-[#9A7B1C] print:break-after-avoid">
                   Article 7 — Droit applicable et juridiction compétente
                 </h3>
                 <p>
@@ -381,7 +385,7 @@ export default function MentionsLegalesPage() {
         </div>
 
         {/* PIED DE PAGE */}
-        <footer className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 print:mt-6 print:pt-3 print:border-zinc-300 print:text-zinc-600 print:break-inside-avoid">
+        <footer className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 print:mt-4 print:pt-2.5 print:border-zinc-300 print:text-[9.5px] print:text-zinc-600 print:break-inside-avoid">
           <span>© 2026 Pack Autorité 360 — Flavien Houvenaeghel EI · SIRET 109 157 297 00010</span>
           <span className="inline-flex items-center gap-2 text-zinc-300 print:text-zinc-800">
             <Shield className="w-4 h-4 text-[#D4AF37] print:hidden" />
