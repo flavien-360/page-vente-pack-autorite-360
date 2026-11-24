@@ -22,7 +22,7 @@ declare global {
   }
 }
 
-const FILLOUT_URL = "https://pack-aurotite-360.fillout.com/immo-systeme"
+const FILLOUT_URL = "/commande"
 const APP_CLIENT_URL = "https://pack-autorite-360-pro.immo-systeme.fr"
 
 export default function Page() {
