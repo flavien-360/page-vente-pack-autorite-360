@@ -159,7 +159,7 @@ export default function MentionsLegalesPage() {
                     <strong className="text-white print:text-black">Tunnels de capture :</strong> Systeme.io — ITACWT Limited, 2 Cruise Park Ravine, Tyrrelstown, Dublin 15, Irlande.
                   </li>
                   <li>
-                    <strong className="text-white print:text-black">Moteur d’automatisation (n8n) :</strong> PikaPods (hébergement européen sécurisé).
+                    <strong className="text-white print:text-black">Moteur d’automatisation (n8n) :</strong> PikaPods (pikapods.com, infrastructure située en Union européenne).
                   </li>
                 </ul>
               </div>
@@ -216,7 +216,7 @@ export default function MentionsLegalesPage() {
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-[#D4AF37] mb-2">
                   <li>
-                    <strong className="text-white print:text-black">Paiement et prélèvements :</strong> GoCardless SAS (mandat SEPA) et/ou Stripe selon le mode de règlement activé.
+                    <strong className="text-white print:text-black">Paiement, prélèvements et facturation :</strong> GoCardless SAS (mandat SEPA), Stripe (selon le mode de règlement activé) et Abby (facturation électronique Factur-X).
                   </li>
                   <li>
                     <strong className="text-white print:text-black">Formulaires, tunnels et agenda :</strong> Fillout, Systeme.io, Cal.com.
@@ -308,10 +308,10 @@ export default function MentionsLegalesPage() {
                   Article 2 — Description du service et obligations
                 </h3>
                 <p className="mb-1">
-                  Pack Autorité 360 est une infrastructure logicielle en ligne (SaaS) comprenant le déploiement d’un tunnel de capture vendeurs, un espace client de validation, la préparation et la diffusion automatisée de contenus locaux, ainsi que des séquences d’e-mails reliées à l’agenda du client.
+                  Pack Autorité 360 est une infrastructure logicielle en ligne (SaaS) comprenant le déploiement d’un tunnel de capture vendeurs, un espace client de validation, la préparation et la diffusion automatisée de contenus locaux, un module d’aide à la mise en forme et à la diffusion d’annonces immobilières (Nouveaux biens, Sous offre, Vendu), ainsi que des séquences d’e-mails reliées à l’agenda du client.
                 </p>
                 <p>
-                  L’éditeur est tenu à une <strong className="text-white print:text-black">obligation de moyens</strong> quant à la disponibilité technique du service et ne garantit aucun volume précis de prospects, de rendez-vous ou de mandats. Le client demeure seul responsable de sa conformité réglementaire (Loi Hoguet, détention d’une carte T ou d’une attestation de collaborateur, mentions légales propres) et de la relecture et validation finale des publications diffusées en son nom.
+                  L’éditeur est tenu à une <strong className="text-white print:text-black">obligation de moyens</strong> quant à la disponibilité technique du service et ne garantit aucun volume précis de prospects, de rendez-vous ou de mandats. Le client demeure seul responsable de sa conformité réglementaire (Loi Hoguet, Loi Alur, détention d’une carte T ou d’une attestation de collaborateur, mentions légales propres), de l’exactitude des données saisies dans ses annonces (prix, surfaces, honoraires, DPE/GES, copropriété) ainsi que de la relecture et validation finale des publications diffusées en son nom. Le maintien des autorisations d’accès sur les plateformes tierces (Meta, LinkedIn) et les éventuelles évolutions ou restrictions techniques de leurs interfaces demeurent indépendants de l’éditeur.
                 </p>
               </div>
 

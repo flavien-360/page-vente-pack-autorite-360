@@ -120,14 +120,12 @@ export default function Page() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-            <a
+            <Link
               href={FILLOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#D4AF37] text-[#09090B] rounded-xl font-extrabold text-base sm:text-lg hover:bg-[#E7C766] hover:-translate-y-0.5 shadow-[0_0_35px_rgba(212,175,55,0.28)] transition-all duration-200"
             >
               Déployer mon infrastructure <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
             <a
               href="#tarifs"
               className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 bg-white/5 text-zinc-200 border border-white/15 rounded-xl font-semibold text-base hover:border-[#D4AF37]/50 hover:text-white transition-all duration-200"
@@ -176,11 +174,12 @@ export default function Page() {
                 <Share2 className="w-6 h-6 text-[#D4AF37]" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                4 carrousels d’expertise par semaine
+                4 carrousels d’expertise par semaine &amp; diffusion de vos biens
               </h3>
               <p className="text-zinc-300 leading-relaxed">
-                Publications sur-mesure à votre nom, votre photo et vos communes sur Facebook, Instagram et LinkedIn.
-                Vous validez en un clic depuis votre espace dédié avant diffusion automatique.
+                Publications sur-mesure à votre nom, votre photo et vos communes sur Facebook, Instagram et LinkedIn,
+                validées en un clic depuis votre espace dédié. Diffusion express de vos biens (Nouveaux biens conformes
+                Loi Alur &amp; DPE, Sous offre, Vendu) en moins d’une minute sur vos 3 réseaux.
               </p>
             </div>
 
@@ -331,6 +330,13 @@ export default function Page() {
                 </li>
                 <li className="flex items-start gap-3.5">
                   <Check className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
+                  <span className="text-zinc-200">
+                    Diffusion express de vos biens (Nouveaux biens conformes Loi Alur &amp; DPE, Sous offre, Vendu) en
+                    moins d’une minute sur vos 3 réseaux
+                  </span>
+                </li>
+                <li className="flex items-start gap-3.5">
+                  <Check className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span className="text-zinc-200">Diffusion multi-réseaux + espace client de validation</span>
                 </li>
                 <li className="flex items-start gap-3.5">
@@ -350,14 +356,12 @@ export default function Page() {
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3">
-            <a
+            <Link
               href={FILLOUT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 bg-[#D4AF37] text-[#09090B] rounded-xl font-extrabold text-base sm:text-lg hover:bg-[#E7C766] hover:-translate-y-0.5 shadow-[0_0_35px_rgba(212,175,55,0.28)] transition-all duration-200"
             >
               Déployer mon infrastructure <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
             <span className="text-xs text-zinc-400">
               Mise en place rapide après validation de votre fiche secteur
             </span>
